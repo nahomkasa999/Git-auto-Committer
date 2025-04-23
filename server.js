@@ -1,8 +1,22 @@
 
 import { execSync } from "child_process";
+import  readline  from "readline";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import dotenv from "dotenv";
 dotenv.config();
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+})
+//I didnt get this part of the code.
+const question = (query) => { 
+  return new Promise((resolve) => {
+    rl.question(query, (answer) => {
+      resolve(answer);
+    });
+  });
+}
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
