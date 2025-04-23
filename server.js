@@ -17,7 +17,7 @@ const question = (query) => {
     });
   });
 }
-rl.close()
+
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 (async () => {
@@ -50,12 +50,13 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     console.log("✅ Committed and pushed:", message);
   } catch (err) {
 
-    const errorMessage = err.stderr.toString().includes("fatal: No configured push destination")
-    console.error("❌ Error:", errorMessage);
+    const errorMessage = err.stderr.toString()
 
-    // if(errorMessage.includes("fatal: No configured push destination")){
-    //   console.log("No configured push destination. Please set up a remote repository.");
-    // }
+    if (errorMessage.includes("fatal: No configured push destination")) {
+      const remoteUrl = await question("No remote configured. Please enter the remote URL: ");
+      console.log(execSync(`git remote add origin ${remoteUrl}`))
+      rl.close()
+    }
   }
 })();
 
