@@ -17,7 +17,6 @@ const question = (query) => {
     });
   });
 }
-
 rl.close()
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
@@ -51,7 +50,11 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     console.log("✅ Committed and pushed:", message);
   } catch (err) {
 
-    const errorMessage = err.message
+    // const errorMessage = err.message
+
+    // if(errorMessage.includes("fatal: No configured push destination")){
+    //   console.log("No configured push destination. Please set up a remote repository.");
+    // }
   }
 })();
 
