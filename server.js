@@ -54,8 +54,9 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
     if (errorMessage.includes("fatal: No configured push destination")) {
       const remoteUrl = await question("No remote configured. Please enter the remote URL: ");
-      console.log(execSync(`git remote add origin ${remoteUrl}`))
+      console.log(execSync(`git remote add origin ${remoteUrl}`).toString())
       rl.close()
+      
     }
   }
 })();
