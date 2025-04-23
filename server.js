@@ -16,20 +16,20 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
       return;
     }
 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-lite" });
 
     const result = await model.generateContent([
-      "Write a concise git commit message for the following code diff:",
+      "The commit message should be short and to the point, like a git commit message. So that we I see the commit message I would say ohhh... this is what I did.",
       diff.slice(0, 10000),
     ]);
     if (result.error) {
       throw new Error(result.error);
     }
-    console.log("Generated commit message:", result.response.text());
+    
     const message = result.response.text().trim();
 
-    console.log(execSync(`git commit -m "${message}"`).toString());
-    // execSync("git push");
+    execSync(`git commit -m "${message}"`);
+    execSync("git push");
 
     console.log("✅ Committed and pushed:", message);
   } catch (err) {
