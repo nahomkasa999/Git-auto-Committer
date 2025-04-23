@@ -18,6 +18,7 @@ const question = (query) => {
   });
 }
 
+rl.close()
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 (async () => {
@@ -49,7 +50,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
     console.log("✅ Committed and pushed:", message);
   } catch (err) {
-    console.log(err.message.includes("fatal: No configured push destination"));
+    console.error("❌ Error:", err.message);
   }
 })();
 
