@@ -48,7 +48,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
     console.log("✅ Committed and pushed:", message);
   } catch (err) {
-    console.error("❌ Error:", err.message);
+    console.log(err)
   }
 })();
 
