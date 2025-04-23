@@ -22,7 +22,10 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
       "Write a concise git commit message for the following code diff:",
       diff.slice(0, 10000),
     ]);
-
+    if (result.error) {
+      throw new Error(result.error);
+    }
+    console.log("Generated commit message:", result.response.text());
     const message = result.response.text().trim();
 
     console.log(execSync(`git commit -m "${message}"`));
