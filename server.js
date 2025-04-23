@@ -50,7 +50,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     console.log("✅ Committed and pushed:", message);
   } catch (err) {
 
-    const errorMessage = err.stdout.toString();
+    const errorMessage = err.stdout.toString().includes("fatal: No configured push destination")
     console.error("❌ Error:", errorMessage);
 
     // if(errorMessage.includes("fatal: No configured push destination")){
