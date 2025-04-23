@@ -41,6 +41,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
     }
     
     const message = result.response.text().trim();
+    console.log("Generated commit message:", message);
 
     execSync(`git commit -m "${message}"`);
 
@@ -48,7 +49,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
     console.log("✅ Committed and pushed:", message);
   } catch (err) {
-    console.log(err.stderr.toString());
+    console.log(err);
   }
 })();
 
