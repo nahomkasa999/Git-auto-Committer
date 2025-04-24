@@ -24,3 +24,5 @@ build/
 # OS generated files
 .DS_Store
 Thumbs.db
+
+autogitcommiter-0.0.2.vsix
