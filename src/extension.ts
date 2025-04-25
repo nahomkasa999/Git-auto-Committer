@@ -7,7 +7,7 @@ import { execSync } from "child_process";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 
-process.env.GEMINI_API_KEY = 'AIzaSyA5y-1WlLrbIVnsda2gkltOkpR8mNO9Gvo'; //I will remove this line later
+process.env.GEMINI_API_KEY = ''; //I will remove this line later
 
 if (!process.env.GEMINI_API_KEY) {
   throw Error("GEMINI_API_KEY is not defined in the environment variables.");
