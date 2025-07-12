@@ -61,3 +61,6 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 })();
 
 
+//added a commet to check if the code is working
+rl.close();
+console.log("Process completed.");
